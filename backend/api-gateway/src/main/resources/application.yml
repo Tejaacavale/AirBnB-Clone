@@ -1,0 +1,49 @@
+# API Gateway Configuration
+spring:
+  application:
+    name: api-gateway
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pitchplease
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  security:
+    user:
+      name: admin
+      password: admin
+
+server:
+  port: 8080
+
+# # Customize application settings
+# pitchplease:
+#   app:
+#     jwtSecret: pitchpleaseSecretKey
+#     jwtExpirationMs: 86400000
+
+# Microservices URLs
+microservice:
+  facility-management-service:
+    url: http://facility-management-service:8090
+  booking-service:
+    url: http://booking-service:8092
+  user-service:
+    url: http://user-service:8091
+  payment-service:
+    url: http://payment-service:8093
+  facility-discovery-service:
+    url: http://facility-discovery-service:8094
+
+# Logging Configuration
+logging:
+  level:
+    com.pitchplease.gateway: INFO
+    org.springframework.web: INFO
